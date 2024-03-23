@@ -28,8 +28,7 @@ class SUtil
 		var daPath:String = '';
 
 		#if android
-			case EXTERNAL:
-				daPath = AndroidEnvironment.getExternalStorageDirectory() + '/.' + Application.current.meta.get('file');
+		daPath = AndroidEnvironment.getExternalStorageDirectory() + '/.' + Application.current.meta.get('file');
 		#elseif ios
 		daPath = LimeSystem.documentsDirectory;
 		#end
