@@ -52,12 +52,11 @@
 	<window if="switch" orientation="landscape" fullscreen="true" width="0" height="0" resizable="true" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
-
-	<set name="BUILD_DIR" value="export/debug" if="debug" />
+     
+        <set name="BUILD_DIR" value="export/debug" if="debug" />
 	<set name="BUILD_DIR" value="export/release" unless="debug" />
 	<set name="BUILD_DIR" value="export/32bit" if="32bits" />
-        <set name="BUILD_DIR" value="export/rpi" if="rpi" />
-
+	
 	<classpath name="source" />
 
 	<!-- __________________________ Game Assets & Etc. __________________________ -->
@@ -168,12 +167,7 @@
 		<haxedef name="HXCPP_STACK_TRACE" />
 	
 		<section if="android">
-			<!-- Do whatever you want I'm tired uninstall and install everytime -->
-			<certificate path="key.keystore" password="nullfunni" alias="null" alias-password="nullfunni" unless="debug" />
-
-			<!--Target SDK-->
-			<android target-sdk-version="29" if="EXTERNAL || MEDIA"/>
-
+			
             <config:android permission="android.permission.MANAGE_EXTERNAL_STORAGE" if="EXTERNAL || MEDIA"/>
 		</section>
 
