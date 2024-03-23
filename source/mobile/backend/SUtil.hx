@@ -23,22 +23,13 @@ import sys.FileSystem;
 class SUtil
 {
 	#if sys
-	public static function getStorageDirectory(type:StorageType = #if EXTERNAL EXTERNAL #elseif OBB EXTERNAL_OBB #elseif MEDIA MEDIA #else EXTERNAL_DATA #end):String
+	public static function getStorageDirectory():String
 	{
 		var daPath:String = '';
 
 		#if android
-		switch (type)
-		{
-			case EXTERNAL_DATA:
-				daPath = AndroidContext.getExternalFilesDir(null);
-			case EXTERNAL_OBB:
-				daPath = AndroidContext.getObbDir();
 			case EXTERNAL:
 				daPath = AndroidEnvironment.getExternalStorageDirectory() + '/.' + Application.current.meta.get('file');
-			case MEDIA:
-				daPath = AndroidEnvironment.getExternalStorageDirectory() + '/Android/media/' + Application.current.meta.get('packageName');
-		}
 		#elseif ios
 		daPath = LimeSystem.documentsDirectory;
 		#end
@@ -123,13 +114,5 @@ class SUtil
 		LimeLogger.println('$title - $message');
 		#end
 	}
-}
-
-enum StorageType
-{
-	EXTERNAL;
-	EXTERNAL_DATA;
-	EXTERNAL_OBB;
-	MEDIA;
 }
 
