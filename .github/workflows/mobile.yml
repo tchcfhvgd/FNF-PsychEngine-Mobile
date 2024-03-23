@@ -62,6 +62,13 @@ jobs:
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
 
+      - name: Setup Git hxcpp
+        run: |
+          haxelib git hxcpp https://github.com/thmtvz/hxcpp.git --quiet
+          cd $(haxelib libpath hxcpp)/tools/hxcpp
+          haxe compile.hxml
+          cd ${{github.workspace}}
+      
       - name: Setup Lime
         run: |
           haxelib run lime setup -alias -y
